@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="flex justify-center mt-10">
+
+    <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+
+        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">
+            nombre {{ nombre }}
+        </h5>
+
+        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">
+             {{ aPaterno }}
+        </h5>
+
+        <p class="text-body mb-4">
+            <strong>Correo:</strong> {{ email }}
+        </p>
+
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}"
+               class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+                Volver
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

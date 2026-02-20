@@ -1,10 +1,12 @@
-from wtforms import Form
-from wtforms import StringField, EmailField
+from flask_wtf import FlaskForm
+from wtforms import StringField, EmailField, IntegerField
 from wtforms import validators
 
 
-class UserForm(Form):
-    id=IntergerField("id")
+class UserForm(FlaskForm):
+
+    id = IntegerField("id")
+
     nombre = StringField(
         "Nombre",
         [
@@ -13,7 +15,7 @@ class UserForm(Form):
         ]
     )
 
-    apaterno = StringField(
+    aPaterno = StringField(
         "Apellido Paterno",
         [
             validators.DataRequired(message="El campo es requerido"),

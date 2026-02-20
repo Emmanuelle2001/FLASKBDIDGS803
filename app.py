@@ -1,3 +1,4 @@
+from wtforms import form
 from flask import Flask, render_template, request, redirect, url_for
 from flask import flash
 from flask import g
@@ -5,23 +6,46 @@ from flask_wtf.csrf import CSRFProtect
 from config import DevelopmentConfig
 from models import db
 from models import Alumnos
+import forms
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 csrf=CSRFProtect()
 
+@app.route("/detalles", methods={"GET","POST"})
+def detalle():
+	if request.method=="GET":
+		id=request.args.get("id")
+		alum1=db.session.query(Alumnos).filter(Alumnos.id==id).first()
+		id=request.args.get("id")
+		nombre=alum1.nombre
+		aPaterno=alum1.aPaterno
+		email=alum1.email
+		return render_template("detalles.html", nombre=nombre, aPaterno=aPaterno, email=email)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template("404.html"),404
 
-@app.route("/")
+@app.route("/", methods={"GET","POST"})
 @app.route("/index")
 def index():
-	return render_template("index.html")
+	create_form=forms.UserForm(request.form)
+	alumno=Alumnos.query.all()
+	return render_template("index.html", form=create_form,alumno=alumno)
 
-@app.route("/Alumnos")
+@app.route("/Alumnos", methods={"GET","POST"})
 def alumnos():
-	return render_template("Alumnos.html")
+	create_form=forms.UserForm(request.form)
+	if request.method=="POST":
+		alum=Alumnos(nombre=create_form.nombre.data,
+			   aPaterno=create_form.aPaterno.data,
+			   email=create_form.email.data)
+		db.session.add(alum)
+		db.session.commit()
+		return redirect(url_for("index"))
+	return render_template("Alumnos.html", form=create_form)
 
 if __name__ == '__main__':
 	csrf.init_app(app)
