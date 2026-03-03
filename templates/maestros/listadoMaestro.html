@@ -4,7 +4,7 @@
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default p-4">
 
     <div class="mb-4">
-<a href="{{ url_for('alumnos') }}" 
+<a href="{{ url_for('maestros') }}" 
    class="inline-flex items-center gap-2 font-medium text-blue-600 hover:underline">
                <svg xmlns="http://www.w3.org/2000/svg" 
                  fill="none" 
@@ -23,10 +23,11 @@
     <table class="w-full text-sm text-left text-body">
         <thead class="text-sm bg-neutral-secondary-soft border-b border-default">
             <tr>
+                <th class="px-6 py-3 font-medium">MATRICULA</th>
                 <th class="px-6 py-3 font-medium">NOMBRE</th>
                 <th class="px-6 py-3 font-medium">APELLIDOS</th>
-                <th class="px-6 py-3 font-medium">CORREO</th>
-                <th class="px-6 py-3 font-medium">TELEFONO</th>
+                <th class="px-6 py-3 font-medium">ESPECIALIDAD</th>
+                <th class="px-6 py-3 font-medium">EMAIL</th>
                 <th class="px-6 py-3 font-medium text-center">EDITAR</th>
                 <th class="px-6 py-3 font-medium text-center">DETALLES</th>
                 <th class="px-6 py-3 font-medium text-center">ELIMINAR</th>
@@ -34,34 +35,37 @@
         </thead>
 
         <tbody>
-            {% for alum in alumno %}
+            {% for alum in maestros %}
             <tr class="bg-neutral-primary border-b border-default">
                 <td class="px-6 py-4 font-medium text-heading">
-                    {{ alum.nombre }}
+                    {{ maestros.matricula }}
+                </td>
+                <td class="px-6 py-4 font-medium text-heading">
+                    {{ maestros.nombre }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ alum.apellidos }}
+                    {{ maestros.apellidos }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ alum.email }}
+                    {{ maestros.especialidad }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ alum.telefono }}
+                    {{ maestros.email }}
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <a href="{{ url_for('modificar', id=alum.id) }}" 
+                    <a href="{{ url_for('modificar', id=maestros.id) }}" 
                     class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
                         Editar
                     </a>
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <a href="{{ url_for('detalle', id=alum.id) }}" 
+                    <a href="{{ url_for('detalle', id=maestros.id) }}" 
                         class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
                          Detalles
                     </a>
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <a href="{{ url_for('eliminar', id=alum.id) }}"
+                    <a href="{{ url_for('eliminar', id=maestros.id) }}"
                     class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700">
                         Eliminar
                     </a>

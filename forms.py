@@ -15,8 +15,8 @@ class UserForm(FlaskForm):
         ]
     )
 
-    aPaterno = StringField(
-        "Apellido Paterno",
+    apellidos = StringField(
+        "Apellidos",
         [
             validators.DataRequired(message="El campo es requerido"),
             validators.Length(min=3, max=50, message="Ingrese un apellido válido")
@@ -28,5 +28,13 @@ class UserForm(FlaskForm):
         [
             validators.DataRequired(message="El campo es requerido"),
             validators.Email(message="Ingrese un correo válido")
+        ]
+    )
+
+    telefono = StringField(
+        "Telefono",
+        [
+            validators.DataRequired(message="El campo es requerido"),
+            validators.Length(min=3, max=50, message="Ingrese un apellido válido")
         ]
     )

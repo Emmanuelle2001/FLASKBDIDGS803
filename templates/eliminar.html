@@ -15,17 +15,28 @@
   </div>
 
   <div class="mb-5">
-    {{ macros.campoNuevo(form.aPaterno) }}
+    {{ macros.campoNuevo(form.apellidos) }}
   </div>
 
   <div class="mb-5">
     {{ macros.campoNuevo(form.email) }}
   </div>
 
+  <div class="mb-5">
+    {{ macros.campoNuevo(form.telefono) }}
+  </div>
+
   <button type="submit"
     class="text-white bg-brand border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     Eliminar
   </button>
+
+  <div class="mt-4">
+            <a href="{{ url_for('index') }}"
+               class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700">
+                Cancelar
+            </a>
+        </div>
 
 </form>
 
