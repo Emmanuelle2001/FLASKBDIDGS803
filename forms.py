@@ -38,3 +38,44 @@ class UserForm(FlaskForm):
             validators.Length(min=3, max=50, message="Ingrese un apellido válido")
         ]
     )
+
+class MaestroForm(FlaskForm):
+
+    matricula = IntegerField(
+        "Matricula",
+        [
+            validators.DataRequired(message="El campo es requerido")
+        ]
+    )
+
+    nombre = StringField(
+        "Nombre",
+        [
+            validators.DataRequired(message="El campo es requerido"),
+            validators.Length(min=3, max=50, message="Ingrese un nombre válido")
+        ]
+    )
+
+    apellidos = StringField(
+        "Apellidos",
+        [
+            validators.DataRequired(message="El campo es requerido"),
+            validators.Length(min=3, max=50, message="Ingrese un apellido válido")
+        ]
+    )
+
+    especialidad = StringField(
+        "Especialidad",
+        [
+            validators.DataRequired(message="El campo es requerido"),
+            validators.Length(min=3, max=50, message="Ingrese una especialidad válida")
+        ]
+    )
+
+    email = EmailField(
+        "Correo",
+        [
+            validators.DataRequired(message="El campo es requerido"),
+            validators.Email(message="Ingrese un correo válido")
+        ]
+    )

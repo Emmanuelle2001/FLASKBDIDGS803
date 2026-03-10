@@ -2,13 +2,9 @@
 {% block container%}
 {% import "_macros.html" as macros%}
 
-<form action="" method="POST" novalidate class="max-w-sm mx-auto">
-    
+<form action="{{ url_for('maestros.nuevo') }}" method="POST" novalidate class="max-w-sm mx-auto">
+        
   {{ form.hidden_tag() }}
-
-  <div class="mb-5">
-    {{ macros.campoNuevo(form.matricula, readonly=True) }}
-  </div>
 
   <div class="mb-5">
     {{ macros.campoNuevo(form.nombre) }}
@@ -22,7 +18,7 @@
     {{ macros.campoNuevo(form.especialidad) }}
   </div>
 
-   <div class="mb-5">
+  <div class="mb-5">
     {{ macros.campoNuevo(form.email) }}
   </div>
 

@@ -96,6 +96,7 @@ def alumnos():
 		return redirect(url_for("index"))
 	return render_template("Alumnos.html", form=create_form)
 
+
 if __name__ == '__main__':
 	csrf.init_app(app)
 	with app.app_context():

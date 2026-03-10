@@ -4,9 +4,9 @@
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default p-4">
 
     <div class="mb-4">
-<a href="{{ url_for('maestros') }}" 
-   class="inline-flex items-center gap-2 font-medium text-blue-600 hover:underline">
-               <svg xmlns="http://www.w3.org/2000/svg" 
+        <a href="{{ url_for('maestros.nuevo') }}" 
+           class="inline-flex items-center gap-2 font-medium text-blue-600 hover:underline">
+            <svg xmlns="http://www.w3.org/2000/svg" 
                  fill="none" 
                  viewBox="0 0 24 24" 
                  stroke-width="1.5" 
@@ -27,7 +27,7 @@
                 <th class="px-6 py-3 font-medium">NOMBRE</th>
                 <th class="px-6 py-3 font-medium">APELLIDOS</th>
                 <th class="px-6 py-3 font-medium">ESPECIALIDAD</th>
-                <th class="px-6 py-3 font-medium">EMAIL</th>
+                <th class="px-6 py-3 font-medium">CORREO</th>
                 <th class="px-6 py-3 font-medium text-center">EDITAR</th>
                 <th class="px-6 py-3 font-medium text-center">DETALLES</th>
                 <th class="px-6 py-3 font-medium text-center">ELIMINAR</th>
@@ -35,38 +35,41 @@
         </thead>
 
         <tbody>
-            {% for alum in maestros %}
+            {% for maes in maestro %}
             <tr class="bg-neutral-primary border-b border-default">
                 <td class="px-6 py-4 font-medium text-heading">
-                    {{ maestros.matricula }}
+                    {{ maes.matricula }}
                 </td>
                 <td class="px-6 py-4 font-medium text-heading">
-                    {{ maestros.nombre }}
+                    {{ maes.nombre }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ maestros.apellidos }}
+                    {{ maes.apellidos }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ maestros.especialidad }}
+                    {{ maes.especialidad }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ maestros.email }}
+                    {{ maes.email }}
                 </td>
+
                 <td class="px-6 py-4 text-center">
-                    <a href="{{ url_for('modificar', id=maestros.id) }}" 
-                    class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+                    <a href="{{ url_for('maestros.modificar', matricula=maes.matricula) }}" 
+                       class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
                         Editar
                     </a>
                 </td>
+
                 <td class="px-6 py-4 text-center">
-                    <a href="{{ url_for('detalle', id=maestros.id) }}" 
-                        class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
-                         Detalles
+                    <a href="{{ url_for('maestros.detalle', matricula=maes.matricula) }}" 
+                       class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
+                        Detalles
                     </a>
                 </td>
+
                 <td class="px-6 py-4 text-center">
-                    <a href="{{ url_for('eliminar', id=maestros.id) }}"
-                    class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700">
+                    <a href="{{ url_for('maestros.eliminar', matricula=maes.matricula) }}"
+                       class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700">
                         Eliminar
                     </a>
                 </td>
@@ -74,6 +77,7 @@
             {% endfor %}
         </tbody>
     </table>
+
 </div>
 
 {% endblock %}
